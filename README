@@ -1,0 +1,22 @@
+Cascade Server Chrome Extension
+-------------------------------
+
+Overview
+--------
+This is an attempt at porting the Cascade Server Firefox Extension over to Google Chrome.
+
+Limitations
+-----------
+Google Chrome does not allow extensions to change the context menu (right-click).  To provide
+similar functionality from the Firefox version to Google Chrome, we'll manipulate the DOM to
+add buttons next to links in the UI.
+
+What are all these files?
+-------------------------
+/lib/jquery/jquery-1.3.2.min.js - we're using the jquery library
+/styles/ - directory where a bunch of icons and the css file is located.  Many of those icons
+aren't being used just yet, and just taken from the Firefox Extension project
+/functions.js - Where all the core functionality for the extension is
+/manifest.json - Chrome's manifest file.  If you need to add stuff to how the browser works,
+or what files to include, it goes here.
+/README - this.

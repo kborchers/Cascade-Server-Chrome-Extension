@@ -27,13 +27,26 @@ for (var i in sideBar)
 					+'<li><a href="#" style="background:url('+ deleteIcon +') no-repeat left top;">Delete</a></li>'
 					+'<li><a href="#" style="background:url('+ publishIcon +') no-repeat left top;">Publish</a></li>'
 				+'</ul>');*/	
-	$(".arrow").click(
-			function()
-			{
-				var menu = generateMenu(this);
-				$(this).after(menu);
-				$(this).next().show();
-			});	
+	
+}
+
+$(".arrow").click(
+		function()
+		{
+			alert('hi');
+			var href = $(this).prev("a").attr("href");
+			
+			alert(href);
+			
+			//var menu = generateMenu(sideBar[i]);
+			//$(sideBar[i]).after(menu);
+			//$(sideBar[i]).next().show();
+		});	
+
+
+function onClickAction(el)
+{
+	
 }
 
 /**

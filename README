@@ -2,7 +2,6 @@ Cascade Server Chrome Extension
 -------------------------------
 
 Author: Syl Turner
-Date: 3/25/2010
 
 Overview
 --------
@@ -13,6 +12,14 @@ Limitations
 Google Chrome does not allow extensions to change the context menu (right-click).  To provide
 similar functionality from the Firefox version to Google Chrome, we'll manipulate the DOM to
 add buttons next to links in the UI.
+
+It looks like they are planning on adding context menu to extension development: 
+http://www.chromium.org/developers/design-documents/extensions/context-menu-api
+It also looks like the expected functionality we need to replicate the Firefox extension is
+a "future improvement:"
+"Provide a mechanism for getting a handle to the precise node in the DOM where the menu was activate"
+
+Until then, we can play with this DOM manipulation...
 
 What are all these files?
 -------------------------

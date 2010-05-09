@@ -19,32 +19,21 @@ for (var i in sideBar)
 {
 	// 0 will always be the base folder. we'll ignore it for now
 	if (i != 0)
-		$(sideBar[i]).after('<img src="'+arrowImg+'" class="arrow"/>');
-				/*+'<ul class="ext-box">'
-					+'<li><a href="#" style="background:url('+ viewIcon +') no-repeat left top;">View</a></li>'
-					+'<li><a href="#" style="background:url('+ editIcon +') no-repeat left top;">Edit</a></li>'
-					+'<li><a href="#" style="background:url('+ copyIcon +') no-repeat left top;">Copy</a></li>'
-					+'<li><a href="#" style="background:url('+ deleteIcon +') no-repeat left top;">Delete</a></li>'
-					+'<li><a href="#" style="background:url('+ publishIcon +') no-repeat left top;">Publish</a></li>'
-				+'</ul>');*/	
-	
+	{
+		var link = $(sideBar[i]);		
+		var img = document.createElement("img");
+		img.setAttribute("src",arrowImg);
+		img.setAttribute("class", "arrow");
+		$(link).after(img);	
+		img.addEventListener("click", function()
+				{
+					generateMenu($(this).prev().attr("href"));
+				}, true);
+
+	}
 }
 
-$(".arrow").click(
-		function()
-		{
-			alert('hi');
-			var href = $(this).prev("a").attr("href");
-			
-			alert(href);
-			
-			//var menu = generateMenu(sideBar[i]);
-			//$(sideBar[i]).after(menu);
-			//$(sideBar[i]).next().show();
-		});	
-
-
-function onClickAction(el)
+function showMenu(menuHTML)
 {
 	
 }
@@ -54,9 +43,8 @@ function onClickAction(el)
  * @param el The element where the menu will be inserted after
  * @return
  */
-function generateMenu(el)
+function generateMenu(link)
 {
-	var link = $(el).prev("a").attr("href");	
 	var linkInfo = getLinkInfo(link);
 	var id = linkInfo["id"];
 	var type = linkInfo["type"];

@@ -24,11 +24,25 @@ for (var i in sideBar)
 		var img = document.createElement("img");
 		img.setAttribute("src",arrowImg);
 		img.setAttribute("class", "arrow");
-		$(link).after(img);	
-		img.addEventListener("click", function()
+		$(link).after(img);
+		$(img).toggle(function()
 				{
-					generateMenu($(this).prev().attr("href"));
-				}, true);
+					var menu = generateMenu($(this).prev().attr("href"));
+					$(this).after(menu);
+					$(this).next().show();
+				},
+				function()
+				{
+					if ($(this).next().hasClass("ext-box"))
+						$(this).next().remove();
+				}
+		);
+		/*img.addEventListener("click", function()
+				{
+					var menu = generateMenu($(this).prev().attr("href"));
+					$(this).after(menu);
+				 	$(this).next().show();
+				}, true);*/
 
 	}
 }

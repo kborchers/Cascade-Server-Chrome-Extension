@@ -14,6 +14,7 @@ var editIcon = chrome.extension.getURL("styles/edit.png");
 var copyIcon = chrome.extension.getURL("styles/copy.png");
 var deleteIcon = chrome.extension.getURL("styles/delete.png");
 var publishIcon = chrome.extension.getURL("styles/publish.png");
+var moveIcon = chrome.extension.getURL("styles/move.png");
 
 for (var i in sideBar)
 {
@@ -37,13 +38,6 @@ for (var i in sideBar)
 						$(this).next().remove();
 				}
 		);
-		/*img.addEventListener("click", function()
-				{
-					var menu = generateMenu($(this).prev().attr("href"));
-					$(this).after(menu);
-				 	$(this).next().show();
-				}, true);*/
-
 	}
 }
 
@@ -65,6 +59,7 @@ function generateMenu(link)
 	var menuHTML = '<ul class="ext-box">'
 		+'<li><a href="'+ viewAssetLink(id, type) +'" style="background:url('+ viewIcon +') no-repeat left top;">View</a></li>'
 		+'<li><a href="'+ editAssetLink(id, type) +'" style="background:url('+ editIcon +') no-repeat left top;">Edit</a></li>'
+		+'<li><a href="'+ moveAssetLink(id, type) +'" style="background:url('+ moveIcon +') no-repeat left top;">Move</a></li>'
 		+'<li><a href="'+ copyAssetLink(id, type) +'" style="background:url('+ copyIcon +') no-repeat left top;">Copy</a></li>'
 		+'<li><a href="'+ deleteAssetLink(id, type) +'" style="background:url('+ deleteIcon +') no-repeat left top;">Delete</a></li>'
 		+'<li><a href="'+ publishAssetLink(id, type) +'" style="background:url('+ publishIcon +') no-repeat left top;">Publish</a></li>'
@@ -153,4 +148,15 @@ function deleteAssetLink(id, type)
 function publishAssetLink(id, type)
 {	
 	return cmsURL+deploy+"/entity/publish.act?type="+type+"&id="+id;
+}
+
+/**
+ * Generates the link to move an asset
+ * @param id
+ * @param type
+ * @return
+ */
+function moveAssetLink(id, type)
+{
+	return cmsURL+deploy+"/entity/move.act?type="+type+"&id="+id;
 }
